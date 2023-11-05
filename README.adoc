@@ -1,0 +1,29 @@
+= Hello World
+
+This is a hello world program for a golang (Go) program.
+
+The program is developed on a Mac computer and the binary is cross compiled for the Raspberry Pi architecture (`GOOS=linux GOARCH=arm GOARM=5`).
+
+The program prints "Hello World" on std out, blinks a LED 10 times (5 times per second) and then fades a LED (using PWM) up and down 5 times.
+
+All pin control is performed using go library https://github.com/stianeikeland/go-rpio[go-rpio].
+
+== Wire LED to the Raspberry Pi
+
+Wire a LED (with resistor in serial) to a ground pin (like physical pin 6) and to GPIO pin 10 (which corresponds to physical pin 19).
+
+https://pinout.xyz/pinout/io_pi_zero[Raspberry Pi Pinout]
+
+NOTE: Check the polarity of the LED. If it is not flashing when you run the program, try to flip the LED +/- sides. ;)
+
+== Build
+
+`make build`
+
+== Deploy
+
+`make deploy`
+
+Copies the compiled binary to ~/tmp at the Raspberry Pi.
+
+NOTE: You will probably need to update/edit the IP address of your Raspberry Pi in `Makefile`.
